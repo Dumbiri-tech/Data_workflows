@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "c0fda1d7-6fc3-4fcd-899e-ec1679af3529",
+		"name": "Data_workflows",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45940214",
+		"_collection_link": "https://www.postman.com/new-team-1907/workspace/fidelitys-api-test/collection/45940214-c0fda1d7-6fc3-4fcd-899e-ec1679af3529?action=share&source=collection_link&creator=45940214"
+	},
+	"item": [
+		{
+			"name": "Request 1(status)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"iteration\",1)"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.execution.setNextRequest(\"Request 3 (login)\")\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://example.com/",
+					"protocol": "https",
+					"host": [
+						"example",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 2 (Registration)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"let iteration = pm.collectionVariables.get(\"iteration\");\r",
+							"  console.log(iteration)\r",
+							"\r",
+							"  if(iteration > 1){\r",
+							"    pm.execution.setNextRequest(null)\r",
+							"  }\r",
+							"  \r",
+							"\r",
+							"\r",
+							"  //incread iteration\r",
+							"iteration++\r",
+							"console.log(iteration)\r",
+							"\r",
+							"//save the iteration\r",
+							"pm.collectionVariables.set(\"iteration\",iteration) // 2"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://example.com/",
+					"protocol": "https",
+					"host": [
+						"example",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 3 (login)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.execution.setNextRequest(\"Request 2 (Registration)\")\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://example.com/",
+					"protocol": "https",
+					"host": [
+						"example",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 4 (Make purchase)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://example.com/",
+					"protocol": "https",
+					"host": [
+						"example",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "iteration",
+			"value": ""
+		}
+	]
+}
